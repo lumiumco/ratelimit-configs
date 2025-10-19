@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: "jwt"
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  jwtRules:
+    - issuer: "http://authorization:8080"
+      jwksUri: "http://authorization.default.svc.cluster.local/oauth2/jwks"
+      forwardOriginalToken: true
+      outputClaimToHeaders:
+        - claim: sub
+          header: x-client
+        - claim: company
+          header: x-company
