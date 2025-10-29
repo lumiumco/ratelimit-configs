@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: light-ratelimit
+  name: ratelimit-config
   namespace: istio-system
 data:
-  light-ratelimit.yaml: |
+  ratelimit-config.yaml: |
     domain: api
     descriptors:
       - key: path
