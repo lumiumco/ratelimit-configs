@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dark-ratelimit-config
+  namespace: istio-system
+data:
+  dark-ratelimit-config.yaml: |
+    domain: api
+    descriptors:
+      - key: path
+        value: /dark*
+        rate_limit:
+          unit: minute
+          requests_per_unit: 1
