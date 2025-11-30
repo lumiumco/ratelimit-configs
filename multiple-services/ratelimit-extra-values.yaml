@@ -4,8 +4,17 @@ volumes:
       defaultMode: 420
       sources:
         - configMap:
+            name: ratelimit-config
+            optional: true
+        - configMap:
             name: light-ratelimit-config
             optional: true
         - configMap:
             name: dark-ratelimit-config
             optional: true
+  - name: prometheus-config-volume
+    projected:
+      defaultMode: 420
+      sources:
+        - configMap:
+            name: prometheus-mapper
