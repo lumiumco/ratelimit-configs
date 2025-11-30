@@ -1,0 +1,11 @@
+volumes:
+  - name: ratelimit-config-volume
+    projected:
+      defaultMode: 420
+      sources:
+        - configMap:
+            name: light-ratelimit-config
+            optional: true
+        - configMap:
+            name: dark-ratelimit-config
+            optional: true
